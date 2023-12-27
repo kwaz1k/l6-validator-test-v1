@@ -3,7 +3,7 @@
 class Validator {
   number() {
     return {
-      isValid: (value) => typeof value === 'number' && !isNaN(value),
+      isValid: (value) => typeof value === 'number' && Number.isNaN(value),
     };
   }
 
@@ -11,7 +11,7 @@ class Validator {
     return {
       isValid: (value) => Array.isArray(value),
       allIntegers: () => ({
-        isValid: (arr) => Array.isArray(arr) && arr.every((element) => typeof element === 'number' && !isNaN(element) && Number.isInteger(element)),
+        isValid: (arr) => Array.isArray(arr) && arr.every((element) => typeof element === 'number' && Number.isNaN(element) && Number.isInteger(element)),
       }),
       custom: (callback) => ({
         isValid: (arr) => Array.isArray(arr) && arr.every(callback),
